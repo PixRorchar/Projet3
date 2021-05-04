@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% form_theme formInscription 'bootstrap_4_layout.html.twig' %}
+
+{% block title %}Expérience | Inscription{% endblock %}
+
+
+
+{% block body %}
+<!--FIN DU HEADER-->
+<div class="header__slogan">
+                        <h1 class="h__slogan--title">Inscription</h1>
+                    </div>
+                </div>
+            </div>
+		</header>
+
+<!--BODY-->
+<div class="container">
+<h1>Inscription à l'éxpérience</h1>
+
+{{ form_start(formInscription) }}
+
+{{ form_row(formInscription.Age, {'attr': {'placeholder':"45"}}) }}
+{{ form_row(formInscription.Sexe) }}
+{{ form_row(formInscription.Poids, {'attr': {'placeholder':"82"}}) }}
+{{ form_row(formInscription.Taille, {'attr': {'placeholder':"177"}}) }}
+{{ form_row(formInscription.Tel, {'attr': {'placeholder':"0607060706"}}) }}
+{{ form_row(formInscription.email, {'attr': {'placeholder':"exemple@mail.com"}}) }}
+{{ form_row(formInscription.email_confirm, {'attr': {'placeholder':"Confirmation"}}) }}
+{{ form_row(formInscription.mdp, {'attr': {'placeholder':"Mot de passe"}}) }}
+{{ form_row(formInscription.mdp_confirm, {'attr': {'placeholder':"Confirmation"}}) }}
+
+<button type="submit" class="btn btnèsuccess">S'inscrire</button>
+
+{{ form_end(formInscription) }}
+
+</div>
+
+{% endblock %}

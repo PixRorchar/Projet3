@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% form_theme formAlim 'bootstrap_4_layout.html.twig' %}
+
+{% block title %}Expérience | Repas{% endblock %}
+
+
+
+{% block body %}
+<!--FIN DU HEADER-->
+<div class="header__slogan">
+                        <h1 class="h__slogan--title">Repas</h1>
+                    </div>
+                </div>
+            </div>
+		</header>
+
+<!--BODY-->
+<div class="container">
+<h1>Déclaration du repas</h1>
+<div class="ggg">
+    <div class="left">
+        {{ form_row(formGroupe.groupe, {'attr': {'placeholder':"Choisissez"}}) }}
+        {{ form_row(formSougr.sougr, {'attr': {'placeholder':"Choisissez"}}) }}
+        {{ form_row(formAlim.libal, {'attr': {'placeholder':"Choisissez"}}) }}
+        <button type="submit" class="btn btn-success">Ajouter</button>
+    </div>
+    <div class="right">
+        <p>Ceci est un test</p>
+        <button type="submit" class="btn btn-success">Envoyer</button>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+</div>
+
+{% endblock %}

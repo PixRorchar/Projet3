@@ -1,0 +1,64 @@
+.article__view__container{
+    width: 70%;
+    margin: auto;
+    padding-top: 20px;
+}
+
+.article__line{
+    display: flex;
+    flex-direction: row;
+    justify-content:center;
+}
+
+.article__block{
+    padding: 10px 30px;
+    width: 50%;
+    text-align: justify;
+}
+
+.article__block-unique{
+    width: 100%;
+    padding: 10px 30px;
+    text-align: justify;
+}
+
+.article__view-title{
+    border-bottom: 2px solid rgba(219, 171, 82, 0.950);
+    line-height: 50px;
+    font-size: 20px;
+    padding-bottom: 15px;
+    margin-bottom: 20px;
+    line-height: 28px;
+}
+
+.article__view-content{
+    padding-top: 10px;
+    text-align: justify;
+    padding-bottom: 20px;
+}
+
+.btn__center{
+    width: 100%;
+    text-align: center;  
+}
+
+.logo__center{
+    width: 100%;
+    text-align: center;
+}
+
+.logo__INRAE{
+    width: 200px;
+    padding-bottom: 15px;
+    padding-top: 20px;
+}
+
+
+
+
+@media only screen and (max-width: 750px ){
+    .article__view__container{
+        width: 90%;
+        padding-right: 20px;
+    }
+}

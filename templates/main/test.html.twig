@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}test
+{% endblock %}
+
+{% block body %}
+	<h1>test</h1>
+{{ form_start(formRepas) }}
+
+    {{ form_row(formRepas.Groupe) }}
+    {{ form_widget(formRepas.SousGroupe) }}
+<input type="submit" value="Create">
+
+{{ form_end(formRepas) }}
+
+    
+    {% endblock %}
+

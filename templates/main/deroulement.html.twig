@@ -1,0 +1,81 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Expérience | Déroulement{% endblock %}
+
+
+
+{% block body %}
+<!--FIN DU HEADER-->
+<div class="header__slogan">
+                        <h1 class="h__slogan--title">Déroulement</h1>
+                    </div>
+                </div>
+            </div>
+		</header>
+
+<!--BODY-->
+<div class="article__view__container">
+    <div class="article__view">
+        <h2 class="article__view-title">Le shéma suivant décrit le déroulement d'une semaine type :</h2>
+        
+        <table class="table">
+        <thead>
+            <tr>
+                <th scope="col" id="bd-right">Jour</th>
+                <th scope="col">Protocole</th>
+                <th scope="col" id="bd-left">Temps estimé</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row" id="bd-right">Lundi</th>
+                <td>
+                    <ul>
+                    <p>Etape 1 :</p>
+                        <li>Déclaration du repas de mardi.</li>
+                        <li>Interaction avec le coach et proposition d'une/plusieurs recommandations.</li>
+                        <li>Acceptation/refus de la/les recommandation.</li>
+                    </ul>
+               </td>            
+                <td id="bd-left">3-5 minutes</td>
+            </tr>
+            <tr>
+                <th scope="row" id="bd-right">Mardi</th>
+                <td>
+                    <ul>
+                    <p>Etape 2 :</p>
+                        <li>Prise en photo du repas (avant consommation).</li>
+                        <li>Envoie de la photo à l'adresse mail indiqué.</li>
+                    </ul>
+                </td>
+                <td id="bd-left">1 minute</td>
+            </tr>
+            <tr>
+                <th scope="row" id="bd-right">Mercredi</th>
+                <td><ul>
+                <p>Etape 1 :</p>
+                        <li> Déclaration du repas de jeudi.</li>
+                        <li>Interaction avec le coach et proposition d'une/plusieurs recommandations.</li>
+                        <li>Acceptation/refus de la/les recommandation.</li>
+                    </ul>
+                </td>
+                <td id="bd-left">3-5 minutes</td>
+            </tr>
+            <tr>
+                <th scope="row" id="bd-right">Jeudi</th>
+                <td><ul>
+                <p>Etape 2 :</p>
+                        <li>Prise en photo du repas (avant consommation).</li>
+                        <li>Envoie de la photo à l'adresse mail indiqué.</li>
+                    </ul>
+                </td>
+                <td id="bd-left">1 minute</td>
+            </tr>
+        </tbody>
+
+
+
+    </table>
+    </div>
+</div>
+{% endblock %}

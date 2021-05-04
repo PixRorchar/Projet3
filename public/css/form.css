@@ -1,0 +1,65 @@
+.form {
+    width: 100%;
+    }
+
+.form__inner{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.form__line{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.form__block{
+    width: 250px;
+    margin: 0 15px;
+}
+
+.form__label{
+    font-weight: 400;
+    margin-bottom: 5px;
+    font-style: 'Nunito', sans-serif;
+}
+
+h4{
+    font-size: 16px;
+    font-style: 'Nunito', sans-serif;
+}
+
+.form__input{
+    height: 40px;
+    width: 100%;
+    border-radius: 5px;
+    border: 2px solid rgba(204, 141, 5, 0.774);
+    outline: none;
+    transition: 300ms ease;
+    padding-left: 10px;
+    font-size: 16px;
+    font-style: 'Nunito', sans-serif;
+    margin-bottom: 15px;
+}
+
+.form__input:focus{
+    border-color: rgb(14, 44, 5);
+}
+
+.form .btn{
+    margin-top: 20px;
+    cursor: pointer;
+    border: 2px solid orange;
+}
+
+
+
+@media only screen and (max-width: 580px ){
+    .form__line{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+}

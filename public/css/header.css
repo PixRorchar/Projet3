@@ -1,0 +1,183 @@
+.header {
+    height: 250px;
+    width: 100%;
+    background: rgb(136, 135, 135);
+    Position: relative;
+    z-index: 1000;
+    margin-bottom: 20px;
+    transition: min-height .2s linear;
+    transition-property: min-height;
+    transition-duration: 0.2s;
+    transition-timing-function: linear;
+    transition-delay: 0s;
+}
+
+.container__header{
+    width: 90%;
+    margin: auto;
+    position: relative;
+    z-index: 0;
+}
+
+.header__otherpage{
+    height: 250px;
+}
+
+.header__band{
+    height: 100px;
+    width: 100%;
+    background: rgb(54, 20, 50);
+    position: fixed;
+}
+
+.header__texture{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;left: 0;
+    background: url('../img/assiette.jpg') center no-repeat;
+    background-size:cover;
+    z-index: 1;
+    opacity: 0.5;
+}
+
+.header__mask{
+    position: absolute;
+    bottom: 0;
+    background: 0 0;
+    height: 42px;
+    width: 100%;
+    z-index: 10;
+}
+
+
+.header__navbar {
+    width: 100%;
+    height: 100px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header__navbar--logo{
+    position: fixed;
+    display: inline-block;
+}
+
+.header__navbar--logo-title {
+    color: white;
+    font-size: 28px;
+}
+
+.header__navbar--menu{
+    position: fixed;
+    display: inline-block;
+    right: 2%;
+}
+
+.header__navbar--menu-link{
+    margin-left: 40px;
+    color: white;
+    text-decoration: none;
+    font-family: 'Nunito', sans-serif;
+    transition: 300ms ease;
+}
+
+.header__navbar--menu-link:hover{
+    margin-left: 40px;
+    color: rgb(255, 212, 132);
+    text-decoration: none;
+    font-family: 'Nunito', sans-serif;
+}
+
+.header__navbar--menu-link-unactive{
+    margin-left: 40px;
+    cursor: default;
+    color: grey;
+    text-decoration: none;
+    font-family: 'Nunito', sans-serif;
+}
+
+.header__navbar--menu-link-unactive:hover{
+    margin-left: 40px;
+    cursor: default;
+    color: grey;
+    text-decoration: none;
+    font-family: 'Nunito', sans-serif;
+}
+
+.header__slogan{
+    text-align: center;
+    font-size: 28px;
+    padding-top: 30px;
+}
+
+.h__slogan--title{
+    color: white;
+    font-size: 60px;
+    text-transform: uppercase;
+    font-family: 'Anton', sans-serif;
+    font-style: italic;
+    letter-spacing: 2px;
+}
+
+
+.header__navbar-toggle{
+    width: 40px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    display: none;
+    cursor: pointer;
+    position: fixed;
+    right: 5%;
+    z-index: 555555;
+}
+
+.header__navbar-toggle-icons, .header__navbar-toggle-icons:before, .header__navbar-toggle-icons:after{
+    content: "";
+    display: block;
+    width: 100%;
+    height: 3px;
+    border-radius:5px;
+    background: white;
+    position: relative;
+}
+
+.header__navbar-toggle-icons:before{top: 10px}
+.header__navbar-toggle-icons:after{top: -13px}
+
+.is-open .header__navbar--menu {
+    transform: translateY(0);
+    z-index: 55554;
+}
+
+
+
+
+@media only screen and (max-width: 1250px ){
+    .header__navbar-toggle{
+        display: flex;
+        z-index: 555555;
+    }
+    .header__navbar--menu{
+        transition: 500ms ease;
+        transform: translateY(-200%);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        width: 95vw;
+        height: 60vh;
+        background: rgba(219, 171, 82, 0.950);
+        top: 0;left: -2%;
+        border-radius: 5px;
+    }
+    .header__navbar--menu-link{
+        margin: 20px 0;
+        font-size:20px;
+    }
+}
+

@@ -1,0 +1,18 @@
+
+
+#bd-right{
+    border-right: 1px solid black;
+}
+
+#bd-left{
+    border-left: 1px solid #000;
+}
+
+
+@media only screen and (max-width: 850px ){
+
+    table ul{
+        list-style-type:none;
+        padding-left: 0;
+    }
+}
