@@ -2,10 +2,15 @@
 
 namespace App\Form;
 
+use App\BusinessDataBundle\Entity\Coverage;
+use App\BusinessDataBundle\Entity\RecourseToExerciseType;
 use App\Entity\Alim;
+use App\Entity\Groupe;
 use App\Entity\SousGroupe;
+use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
@@ -16,46 +21,55 @@ class SousGroupeType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder
-            ->add('sougr', EntityType::class, [
-                'class' => SousGroupe::class,
-                'placeholder' => '',
+        $groupe = $options['data']['groupe'] ?? null;
+        if (null !== $groupe) {
+            $builder->add('groupe', EntityType::class, [
+                'mapped' => false,
+                'class' => Groupe::class,
+                'choice_label' => 'groupe',
+                'query_builder' => function (EntityRepository $r) use ($groupe) {
+                    $qb = $r->createQueryBuilder('r');
+                    $qb->where('r.id = :groupe')->setParameter('groupe', $groupe);
+
+                    return $qb;
+                }
             ]);
+            $builder->add(
+                'sousGroupe',
+                EntityType::class,
+                [
+                    'mapped'        => false,
+                    'class'         => SousGroupe::class,
+                    'choice_label'  => 'sougr',
+                    'query_builder' => function (EntityRepository $r) use ($groupe) {
+                        $qb = $r->createQueryBuilder('r');
+                        $qb->where('r.Groupe = :groupe')->setParameter('groupe', $groupe);
 
-        $formModifier = function (FormInterface $form, SousGroupe $sougr = null) {
-            $alim = null === $sougr ? [] : $sougr->getAlims();
-
-            $form->add('alims', EntityType::class, [
-                'class' => Alim::class,
-                'placeholder' => '',
-                'choices' => $alim,
-            ]);
-
-        };
-
-        $builder->addEventListener(
-            FormEvents::PRE_SET_DATA,
-            function (FormEvent $event) use ($formModifier) {
-
-                $data = $event->getData();
-
-                $formModifier($event->getForm(), $data);               
-            }
-        );
-
-    /*    $builder->get('sougr')->addEventListener(
-            FormEvents::POST_SUBMIT,
-            function (FormEvent $event) use ($formModifier) {
-                $sougr = $event->getForm()->getData();
-                $formModifier($event->getForm()->getParent(), $sougr);
-            } 
-        ); */
+                        return $qb;
+                    }
+                ]
+            )
+                    ->add('submit', SubmitType::class);
+        } else {
+            $builder->add(
+                'sousGroupe',
+                EntityType::class,
+                [
+                    'mapped'        => false,
+                    'class'         => SousGroupe::class,
+                    'choice_label'  => 'sougr'
+                ]
+            )
+                    ->add('submit', SubmitType::class);
+        }
     }
 
     public function configureOptions(OptionsResolver $resolver): void
     {
-        $resolver->setDefaults([
-            'data_class' => SousGroupe::class,
-        ]);
+        $resolver->setDefaults(
+            [
+                'data_class' => null,
+            ]
+        );
     }
 }

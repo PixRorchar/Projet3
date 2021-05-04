@@ -1,6 +1,5 @@
 {% extends 'base.html.twig' %}
 
-{% form_theme form 'bootstrap_4_layout.html.twig' %}
 
 {% block title %}Expérience | Repas{% endblock %}
 
@@ -20,11 +19,19 @@
 <h1>Déclaration du repas</h1>
 <div class="ggg">
     <div class="left">
-    {{ form_start(form) }}
+        {% if formGroupe is defined %}
+            {% form_theme formGroupe 'bootstrap_4_layout.html.twig' %}
+            {{ form(formGroupe) }}
+        {% endif %}
+        {% if formSousGroupe is defined %}
+            {% form_theme formSousGroupe 'bootstrap_4_layout.html.twig' %}
+            {{ form(formSousGroupe) }}
+        {% endif %}
+        {% if formAlims is defined %}
+            {% form_theme formAlims 'bootstrap_4_layout.html.twig' %}
+            {{ form(formAlims) }}
+        {% endif %}
 
-        {{ form_row(form.groupe) }}
-        
-    {{ form_end(form) }}
 
         <button type="submit" class="btn btn-success">Ajouter</button>
     </div>

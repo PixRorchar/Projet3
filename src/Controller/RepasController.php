@@ -7,6 +7,7 @@ use App\Entity\Groupe;
 use App\Entity\Repas;
 use App\Entity\SousGroupe;
 use App\Form\AlimType;
+use App\Form\GroupeType;
 use App\Form\RepasType;
 use App\Form\SousGroupeType;
 use Doctrine\ORM\EntityManagerInterface;
@@ -33,23 +34,39 @@ class RepasController extends AbstractController
     public function declaration_repas(Request $request, EntityManagerInterface $manager): Response
     {
 
-        $repas = new Repas();
+//        $repas = new Repas();
+//
+//        $form = $this->createForm(RepasType::class, $repas);
+//
+//        $form->handleRequest($request);
+//
+//        if ($form->isSubmitted() && $form->isValid()) {
+//            //return $this->redirectToRoute('main/index.html.twig');
+//        }
+//
 
-        $form = $this->createForm(RepasType::class, $repas);
+//
 
-        $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            //return $this->redirectToRoute('main/index.html.twig');
+        $formGroupe = $this->createForm(GroupeType::class, new Groupe());
+        $formSousGroupe = $this->createForm(SousGroupeType::class, null);
+        $formGroupe->handleRequest($request);
+        $data = ['formGroupe' => $formGroupe->createView()];
+
+        if ($formGroupe->isSubmitted() && $formGroupe->isValid()) {
+            $groupe = ($request->request->get('groupe')['groupe']);
+            $formSousGroupe = $this->createForm(SousGroupeType::class, null, ['data' => ['groupe' => $groupe]]);
+            $data = ['formSousGroupe' => $formSousGroupe->createView()];
         }
 
-        return $this->render('main/repas2.html.twig', [
-            'form' => $form->createView(),
-        ]);
+        if ($request->request->get('sous_groupe')) {
+            $sousGroupe = ($request->request->get('sous_groupe')['sousGroupe']);
+            $groupe = ($request->request->get('sous_groupe')['groupe']);
+            $formAlims = $this->createForm(AlimType::class, null, ['data' => ['sousGroupe' => $sousGroupe, 'groupe' => $groupe]]);
+            $data = ['formAlims' => $formAlims->createView()];
+        }
 
-
-
-
+        return $this->render('main/repas2.html.twig', $data);
         /*
         $alim = new Alim();
 
